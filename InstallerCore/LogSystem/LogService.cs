@@ -8,7 +8,7 @@ namespace Timbermod_installer.LogSystem
 
         public static LogService Instance => _logService ??= new LogService();
 
-        public ObservableCollection<string> Logs { get; } = new();
+        public ObservableCollection<string> Logs { get; } = new ObservableCollection<string>();
 
         public static void Send(string message)
         {

@@ -1,17 +1,45 @@
 ﻿using System.Windows;
-using Timbermod_installer.LogSystem;
+using System.Windows.Forms;
+using Timbermod_installer.GamePathFinder;
 
 namespace Timbermod_installer
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class Installer : Window
     {
+        private readonly InstallerViewModel _installerViewModel;
+
+        private readonly GamePathFinderService _gamePathFinderService;
+
         public Installer()
         {
-            DataContext = LogService.Instance;
+            _installerViewModel = new InstallerViewModel();
+            _gamePathFinderService = new GamePathFinderService();
+
+            DataContext = _installerViewModel;
+
             InitializeComponent();
+            FindGamePath();
+        }
+
+        public void FindGamePath()
+        {
+            if (_gamePathFinderService.TryGetGamePath(out string gamePath))
+            {
+                _installerViewModel.GamePath = gamePath;
+            }
+        }
+
+        private void OnChangePathClick(object sender, RoutedEventArgs e)
+        {
+            var dlg = new FolderBrowserDialog();
+
+
+            if (dlg.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            {
+                return;
+            }
+
+            _installerViewModel.GamePath = dlg.SelectedPath;
         }
     }
 }

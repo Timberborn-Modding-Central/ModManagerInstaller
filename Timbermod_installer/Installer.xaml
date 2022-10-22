@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         Name="Test"
-        Title="Timberborn mod installer" Height="450" Width="600" WindowStartupLocation="CenterScreen">
+        Title="Timberborn mod installer" Height="500" Width="700" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
             <VisualBrush>
@@ -24,20 +24,20 @@
         </Grid.Background>
 
         <StackPanel HorizontalAlignment="Center">
-            <TextBlock Margin="0 50 0 0" Foreground="White" FontSize="70" FontWeight="Bold">Mod installer</TextBlock>
+            <TextBlock Margin="0 20 0 0" Foreground="White" FontSize="90" FontWeight="Bold">Mod installer</TextBlock>
             <Button Height="30" FontSize="18">Install</Button>
             <Grid Margin="0 5 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"></ColumnDefinition>
                     <ColumnDefinition Width="2*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBox Margin="0 0 10 0" IsReadOnly="True">Timberborn path not found</TextBox>
-                <Button Grid.Column="1">Change Path</Button>
+                <TextBox Margin="0 0 10 0" IsReadOnly="True" Text="{Binding GamePath}" />
+                <Button Grid.Column="1" Click="OnChangePathClick">Change Path</Button>
             </Grid>
 
             <TextBlock Margin="0 5 0 0" Foreground="White" FontWeight="Bold">Logs</TextBlock>
             <ScrollViewer Height="150" Background="White" Margin="0 0 0 0">
-                <ItemsControl ItemsSource="{Binding Path=Logs}">
+                <ItemsControl ItemsSource="{Binding Path=LogService.Logs}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}"/>

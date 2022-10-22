@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timbermod_installer", "Timbermod_installer\Timbermod_installer.csproj", "{8A25CE0A-C276-4FBF-A952-AC25FE210A51}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "InstallerCore", "InstallerCore\InstallerCore.shproj", "{70493677-F913-42CA-9AC0-E84BCB9D05A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
