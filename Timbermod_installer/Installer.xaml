@@ -1,0 +1,50 @@
+﻿<Window x:Class="Timbermod_installer.Installer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Name="Test"
+        Title="Timberborn mod installer" Height="450" Width="600" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <VisualBrush>
+                <VisualBrush.Visual>
+                    <Grid ClipToBounds="True">
+                        <Image Source="..\Images\background.jpg" Stretch="UniformToFill" Margin="-50">
+                            <Image.Effect>
+                                <BlurEffect Radius="3" />
+                            </Image.Effect>
+                        </Image>
+                        <Rectangle Fill="black" Opacity="0.3" />
+                    </Grid>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Grid.Background>
+
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Margin="0 50 0 0" Foreground="White" FontSize="70" FontWeight="Bold">Mod installer</TextBlock>
+            <Button Height="30" FontSize="18">Install</Button>
+            <Grid Margin="0 5 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Margin="0 0 10 0" IsReadOnly="True">Timberborn path not found</TextBox>
+                <Button Grid.Column="1">Change Path</Button>
+            </Grid>
+
+            <TextBlock Margin="0 5 0 0" Foreground="White" FontWeight="Bold">Logs</TextBlock>
+            <ScrollViewer Height="150" Background="White" Margin="0 0 0 0">
+                <ItemsControl ItemsSource="{Binding Path=Logs}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</Window>
