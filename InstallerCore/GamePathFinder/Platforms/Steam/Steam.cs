@@ -59,17 +59,15 @@ namespace Timbermod_installer.GamePathFinder.Platforms
                 return "";
             }
 
-            var gamePath = "";
-
             foreach (KeyValuePair<int, LibraryFolder> libraryFolder in libraryFolders.Libraryfolders)
             {
-                if (TryGetGamePathInSteamInstallation(Path.GetFullPath(libraryFolder.Value.Path), out gamePath))
+                if (TryGetGamePathInSteamInstallation(Path.GetFullPath(libraryFolder.Value.Path), out string gamePath))
                 {
-                    break;
+                    return gamePath;
                 }
             }
 
-            return gamePath;
+            return "";
         }
 
         private static bool TryGetGamePathInSteamInstallation(string installationPath, out string gamePath)
